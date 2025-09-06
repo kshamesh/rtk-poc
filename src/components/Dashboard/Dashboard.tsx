@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
-import type { AppDispatch } from "../store/store";
-import { saveDashboard } from "../store/dashboardThunks";
-import CardA from "./cardA";
-import CardB from "./cardB";
-import CardC from "./cardC";
-import ResultCard from "./resultCard";
+import type { AppDispatch } from "../../store/store";
+import { saveDashboard } from "../../store/dashboardThunks";
+import CardA from "../Cards/CardA";
+import CardB from "../Cards/CardB";
+import CardC from "../Cards/CardC";
+import LiveChanges from "./LiveChanges";
 import "./Dashboard.css";
-import "./Cards.css";
-import CardD from "./CardD";
+import "../Cards/Cards.css";
+import CardD from "../Cards/CardD";
 
 function Dashboard() {
   const dispatch = useDispatch<AppDispatch>();
@@ -39,7 +39,7 @@ function Dashboard() {
         </div>
       </div>
       <div style={{ display: "flex", marginTop: "2rem" }}>
-        <ResultCard />
+        <LiveChanges />
       </div>
     </div>
   );

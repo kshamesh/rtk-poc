@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import cardAReducer from "../features/cardA/cardASlice";
-import cardBReducer from "../features/cardB/cardBSlice";
-import cardCReducer from "../features/cardC/cardCSlice";
-import { apiSlice } from "../features/apiSlice";
+import cardAReducer from "../features/CardA/cardASlice";
+import cardBReducer from "../features/CardB/cardBSlice";
+import cardCReducer from "../features/CardC/cardCSlice";
+import { apiSlice } from "../features/api/apiSlice";
+import userSelectionReducer from "../features/CardD/userSelectionSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     cardB: cardBReducer,
     cardC: cardCReducer,
     [apiSlice.reducerPath]: apiSlice.reducer, // ✅ add api reducer
+    userSelection: userSelectionReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware), // ✅ add api middleware
