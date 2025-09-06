@@ -14,7 +14,7 @@ const CardC: React.FC = () => {
 
   return (
     <div className="card-content">
-      <h2>Card D (Users)</h2>
+      <h3>Card D (Users)</h3>
       <ul style={{ listStyle: "none", textAlign: "left", marginLeft: "-30px" }}>
         {users.slice(0, 5).map((user) => {
           const isSelected = selectedMap[user.id] ?? false;
