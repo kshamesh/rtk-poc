@@ -4,6 +4,7 @@ import cardBReducer from "../features/CardB/cardBSlice";
 import cardCReducer from "../features/CardC/cardCSlice";
 import { apiSlice } from "../features/api/apiSlice";
 import userSelectionReducer from "../features/CardD/userSelectionSlice";
+import sideDrawerReducer from "../features/SideDrawer/sideDrawerSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     cardC: cardCReducer,
     [apiSlice.reducerPath]: apiSlice.reducer, // ✅ add api reducer
     userSelection: userSelectionReducer,
+    sideDrawer: sideDrawerReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware), // ✅ add api middleware

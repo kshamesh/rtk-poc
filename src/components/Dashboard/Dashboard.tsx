@@ -1,36 +1,39 @@
-import { useDispatch } from "react-redux";
-import type { AppDispatch } from "../../store/store";
+import React from "react";
+import { DashboardHeader } from "./DashboardHeader";
+import { useAppDispatch } from "../../store/hooks";
 import { saveDashboard } from "../../store/dashboardThunks";
-import CardA from "../Cards/CardA";
-import CardB from "../Cards/CardB";
-import CardC from "../Cards/CardC";
 import LiveChanges from "./LiveChanges";
-import "./Dashboard.css";
-import "../Cards/Cards.css";
+import CardC from "../Cards/CardC";
+import { SideDrawer } from "../SideDrawer";
+import CardB from "../Cards/CardB";
+import CardA from "../Cards/CardA";
 import CardD from "../Cards/CardD";
 
-function Dashboard() {
-  const dispatch = useDispatch<AppDispatch>();
+export const Dashboard: React.FC = () => {
+  const dispatch = useAppDispatch();
 
   const handleSave = () => {
     dispatch(saveDashboard());
   };
 
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-banner">
-        <h1 className="dashboard-title">Dashboard Demo</h1>
-        <button className="dashboard-button" onClick={handleSave}>
-          💾 Save Dashboard
-        </button>
-      </div>
-      <div className="dashboard-cards">
+    <div>
+      <DashboardHeader onSave={handleSave} />
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "16px",
+          padding: "16px",
+        }}
+      >
+        {/* Add more cards as needed */}
         <div className="card">
           <CardA />
         </div>
-        <div className="card">
+        {/* <div className="card">
           <CardB />
-        </div>
+        </div> */}
         <div className="card">
           <CardC />
         </div>
@@ -38,11 +41,8 @@ function Dashboard() {
           <CardD />
         </div>
       </div>
-      <div style={{ display: "flex", marginTop: "2rem" }}>
-        <LiveChanges />
-      </div>
+      <LiveChanges />
+      <SideDrawer />
     </div>
   );
-}
-
-export default Dashboard;
+};

@@ -5,7 +5,7 @@ import { apiSlice } from "../../features/api/apiSlice";
 import type { RootState } from "../../store/store";
 import { toggleUserSelection } from "../../features/CardD/userSelectionSlice";
 
-const CardC: React.FC = () => {
+const CardD: React.FC = () => {
   const { data: users = [] } = apiSlice.endpoints.getUsers.useQuery(undefined);
   const selectedMap = useSelector(
     (state: RootState) => state.userSelection.selectedMap
@@ -15,7 +15,7 @@ const CardC: React.FC = () => {
   return (
     <div className="card-content">
       <h3>Card D (Users)</h3>
-      <ul style={{ listStyle: "none", textAlign: "left", marginLeft: "-30px" }}>
+      <ul style={{ listStyle: "none", textAlign: "left" }}>
         {users.slice(0, 5).map((user) => {
           const isSelected = selectedMap[user.id] ?? false;
           return (
@@ -36,4 +36,4 @@ const CardC: React.FC = () => {
   );
 };
 
-export default CardC;
+export default CardD;

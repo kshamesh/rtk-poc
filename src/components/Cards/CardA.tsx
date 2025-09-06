@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { updateCardA } from "../../features/CardA/cardASlice";
+import "./Cards.css";
 
 function CardA() {
   const dispatch = useAppDispatch();
