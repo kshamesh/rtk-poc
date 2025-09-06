@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { type RootState } from "../store/store";
+import { selectUsers } from "../selectors/cardDSelectors";
 
 const cardStyle: React.CSSProperties = {
   border: "1px solid #4caf50",
@@ -32,15 +33,17 @@ const preStyle: React.CSSProperties = {
 };
 
 const ResultCard: React.FC = () => {
+  const state = useSelector((state: RootState) => state);
   const cardA = useSelector((state: RootState) => state.cardA);
   const cardB = useSelector((state: RootState) => state.cardB);
   const cardC = useSelector((state: RootState) => state.cardC);
+  const cardD = selectUsers(state);
 
   return (
     <div style={cardStyle}>
       <div style={headerStyle}>📊 Dashboard Live State</div>
       <pre style={preStyle}>
-        {JSON.stringify({ cardA, cardB, cardC }, null, 2)}
+        {JSON.stringify({ cardA, cardB, cardC, cardD }, null, 2)}
       </pre>
     </div>
   );

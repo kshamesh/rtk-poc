@@ -28,7 +28,7 @@
 .dashboard-button {
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
-  background: rgba(255, 255, 255, 0.2);
+  background: #fff1d0;
   border: 1px solid #f7c59f;
   border-radius: 10px;
   backdrop-filter: blur(10px);

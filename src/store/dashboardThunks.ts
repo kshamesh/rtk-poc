@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
+import { selectUsers } from "../selectors/cardDSelectors";
 
 export const saveDashboard = createAsyncThunk(
   "dashboard/save",
@@ -11,6 +12,7 @@ export const saveDashboard = createAsyncThunk(
       cardA: state.cardA,
       cardB: state.cardB,
       cardC: state.cardC,
+      cardD: selectUsers(state),
     };
 
     console.log("Saving Dashboard:", payload);
