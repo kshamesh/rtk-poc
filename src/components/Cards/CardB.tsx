@@ -20,9 +20,9 @@ function CardB() {
       >
         Add Item
       </button>
-      <ul>
+      <ul style={{ textAlign: "left", listStyle: "none" }}>
         {cardB.items.map((i, idx) => (
-          <li key={idx}>{i}</li>
+          <li key={idx}>💡 {i}</li>
         ))}
       </ul>
     </div>
