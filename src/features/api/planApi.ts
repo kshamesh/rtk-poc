@@ -76,7 +76,10 @@ export async function createPlan(productId: string): Promise<Plan> {
     createdBy: "mockUser",
     productId,
     isNew: true,
-    // cardA is intentionally missing for new plans
+    cardA: {
+      title: "",
+      value: 0,
+    },
   };
 
   mockPlans[productId] = newPlan;
