@@ -1,0 +1,21 @@
+{
+  "id": "new-1757407905038",
+  "name": "New Dashboard Plan",
+  "createdAt": "2025-09-09T08:51:45.038Z",
+  "createdBy": "mockUser",
+  "productId": "89",
+  "isNew": true,
+  "cardA": {
+    "title": "Initial A",
+    "value": 10
+  },
+  "cardB": {
+    "name": "Initial B",
+    "items": []
+  },
+  "cardC": {
+    "notes": "",
+    "flag": false
+  },
+  "selectedUserIds": []
+}

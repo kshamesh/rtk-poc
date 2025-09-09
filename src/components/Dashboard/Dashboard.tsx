@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { DashboardHeader } from "./DashboardHeader";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppDispatch } from "../../store/hooks";
 import { saveDashboard } from "../../store/saveDashboard";
 import LiveChanges from "./LiveChanges";
 import CardC from "../Cards/CardC";
@@ -13,13 +13,14 @@ import { CardE } from "../Cards/CardE";
 
 export const Dashboard: React.FC = () => {
   const handleSave = () => {
+    alert("Saving Dashboard...");
     dispatch(saveDashboard());
   };
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const productId = "103"; // 🚩 Hardcoded (only plan id 101,102,103 exist in local mock setup)
+    const productId = "89"; // 🚩 Hardcoded (only plan id 101,102,103 exist in local mock setup)
     dispatch(loadOrCreatePlan(productId));
   }, [dispatch]);
 

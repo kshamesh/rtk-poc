@@ -38,13 +38,14 @@ const LiveChanges: React.FC = () => {
   const cardB = useSelector((state: RootState) => state.cardB);
   const cardC = useSelector((state: RootState) => state.cardC);
   const selectedUserIds = selectSelectedUserIds(state);
+  const plan = useSelector((state: RootState) => state.plan.plan);
+
+  const globalState = { ...plan, cardA, cardB, cardC, selectedUserIds };
 
   return (
     <div style={cardStyle}>
       <div style={headerStyle}>📊 Dashboard Live State</div>
-      <pre style={preStyle}>
-        {JSON.stringify({ cardA, cardB, cardC, selectedUserIds }, null, 2)}
-      </pre>
+      <pre style={preStyle}>{JSON.stringify(globalState, null, 2)}</pre>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
-import type { RootState } from "../../store/store";
-import { useAppSelector } from "../../store/hooks";
+import { usePlanStatus } from "../../features/Plan/usePlanStatus";
 
 const preStyle: React.CSSProperties = {
   textAlign: "left",
@@ -13,13 +12,13 @@ const preStyle: React.CSSProperties = {
 };
 
 export const CardE: React.FC = () => {
-  const plan = useAppSelector((state: RootState) => state.plan.plan);
+  const { loading, plan } = usePlanStatus();
 
-  if (!plan) {
+  if (loading) {
     return (
       <div>
         <h3>Plan</h3>
-        <p>No plan loaded</p>
+        <p>Loading...</p>
       </div>
     );
   }
