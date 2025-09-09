@@ -1,9 +1,11 @@
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { updateCardC } from "../../features/CardC/cardCSlice";
+import { usePlanStatus } from "../../features/Plan/usePlanStatus";
 
 function CardC() {
   const dispatch = useAppDispatch();
   const cardC = useAppSelector((s) => s.cardC);
+  const { isNew, loading, plan } = usePlanStatus();
 
   return (
     <div className="card-content">
@@ -19,7 +21,15 @@ function CardC() {
           checked={cardC.flag}
           onChange={(e) => dispatch(updateCardC({ flag: e.target.checked }))}
         />
-        I acknowledge the terms and conditions
+        {/* show this text only after loading */}
+        {loading ? (
+          <span>Plan Loading...</span>
+        ) : (
+          <span>
+            I acknowledge the terms and conditions given in{" "}
+            {isNew ? "🆕 New Plan" : "📂 Existing Plan"} named {plan?.name}
+          </span>
+        )}
       </label>
     </div>
   );

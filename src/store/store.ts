@@ -5,6 +5,7 @@ import cardCReducer from "../features/CardC/cardCSlice";
 import { apiSlice } from "../features/api/apiSlice";
 import userSelectionReducer from "../features/CardD/userSelectionSlice";
 import sideDrawerReducer from "../features/SideDrawer/sideDrawerSlice";
+import planReducer from "../features/Plan/planSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     [apiSlice.reducerPath]: apiSlice.reducer, // ✅ add api reducer
     userSelection: userSelectionReducer,
     sideDrawer: sideDrawerReducer,
+    plan: planReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware), // ✅ add api middleware

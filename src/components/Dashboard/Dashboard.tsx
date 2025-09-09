@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DashboardHeader } from "./DashboardHeader";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { saveDashboard } from "../../store/saveDashboard";
 import LiveChanges from "./LiveChanges";
 import CardC from "../Cards/CardC";
@@ -8,13 +8,20 @@ import { SideDrawer } from "../SideDrawer";
 // import CardB from "../Cards/CardB";
 import CardA from "../Cards/CardA";
 import CardD from "../Cards/CardD";
+import { loadOrCreatePlan } from "../../features/Plan/planSlice";
+import { CardE } from "../Cards/CardE";
 
 export const Dashboard: React.FC = () => {
-  const dispatch = useAppDispatch();
-
   const handleSave = () => {
     dispatch(saveDashboard());
   };
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const productId = "103"; // 🚩 Hardcoded (only plan id 101,102,103 exist in local mock setup)
+    dispatch(loadOrCreatePlan(productId));
+  }, [dispatch]);
 
   return (
     <div>
@@ -39,6 +46,9 @@ export const Dashboard: React.FC = () => {
         </div>
         <div className="card">
           <CardD />
+        </div>
+        <div className="card">
+          <CardE />
         </div>
       </div>
       <LiveChanges />
