@@ -20,7 +20,7 @@ export const Dashboard: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const productId = "89"; // 🚩 Hardcoded (only plan id 101,102,103 exist in local mock setup)
+    const productId = "102"; // 🚩 Hardcoded (only plan id 101,102,103 exist in local mock setup)
     dispatch(loadOrCreatePlan(productId));
   }, [dispatch]);
 

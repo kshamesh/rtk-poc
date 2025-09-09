@@ -1,10 +1,26 @@
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { updateCardA } from "../../features/CardA/cardASlice";
 import "./Cards.css";
+import { usePlanStatus } from "../../features/Plan/usePlanStatus";
 
 function CardA() {
   const dispatch = useAppDispatch();
   const cardA = useAppSelector((s) => s.cardA);
+
+  const { plan, isExisting } = usePlanStatus();
+
+  // -----------------------------
+  // Hydrate CardA from Plan if existing
+  // -----------------------------
+  useEffect(() => {
+    if (plan && isExisting && plan.cardA) {
+      // Merge plan.cardA into current slice state
+      dispatch(updateCardA({ ...cardA, ...plan.cardA }));
+    }
+    // We only want this to run once when plan loads
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [plan, isExisting]);
 
   return (
     <div className="card-content">

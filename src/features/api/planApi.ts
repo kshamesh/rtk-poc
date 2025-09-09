@@ -15,6 +15,10 @@ const mockPlans: Record<string, Plan> = {
     createdBy: "system",
     productId: "101",
     isNew: false,
+    cardA: {
+      title: "Plan Card A Title",
+      value: 999,
+    },
   },
   "102": {
     id: "plan-102",
@@ -23,6 +27,10 @@ const mockPlans: Record<string, Plan> = {
     createdBy: "system",
     productId: "102",
     isNew: false,
+    cardA: {
+      title: "Another Card A Title",
+      value: 555,
+    },
   },
   "103": {
     id: "plan-103",
@@ -31,6 +39,10 @@ const mockPlans: Record<string, Plan> = {
     createdBy: "system",
     productId: "103",
     isNew: false,
+    cardA: {
+      title: "Third Card A Title",
+      value: 333,
+    },
   },
   // Add more mock plans as needed
 };
@@ -52,6 +64,7 @@ export async function getPlan(productId?: string): Promise<Plan | null> {
 
 /**
  * CREATE a new plan
+ * - new plans do NOT have cardA initially
  */
 export async function createPlan(productId: string): Promise<Plan> {
   await delay(500);
@@ -63,6 +76,7 @@ export async function createPlan(productId: string): Promise<Plan> {
     createdBy: "mockUser",
     productId,
     isNew: true,
+    // cardA is intentionally missing for new plans
   };
 
   mockPlans[productId] = newPlan;

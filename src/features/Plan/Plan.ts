@@ -5,4 +5,8 @@ export interface Plan {
   createdBy: string;
   isNew?: boolean; // helps in UI
   productId: string;
+  cardA: {
+    title: string;
+    value: number;
+  };
 }
