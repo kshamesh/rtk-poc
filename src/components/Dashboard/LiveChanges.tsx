@@ -39,8 +39,18 @@ const LiveChanges: React.FC = () => {
   const cardC = useSelector((state: RootState) => state.cardC);
   const selectedUserIds = selectSelectedUserIds(state);
   const plan = useSelector((state: RootState) => state.plan.plan);
+  const travelCard = useSelector(
+    (state: RootState) => state.plan.plan?.travelCard
+  );
 
-  const globalState = { ...plan, cardA, cardB, cardC, selectedUserIds };
+  const globalState = {
+    ...plan,
+    cardA,
+    cardB,
+    cardC,
+    selectedUserIds,
+    travelCard,
+  };
 
   return (
     <div style={cardStyle}>

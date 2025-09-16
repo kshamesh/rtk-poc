@@ -9,4 +9,5 @@ export interface Plan {
     title: string;
     value: number;
   };
+  travelCard: string[]; // example of another card
 }

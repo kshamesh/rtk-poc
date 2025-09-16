@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { updateCardA } from "../../features/CardA/cardASlice";
+import { updateCardA, resetCardA } from "../../features/CardA/cardASlice";
 import "./Cards.css";
 import { usePlanStatus } from "../../features/Plan/usePlanStatus";
 
@@ -14,9 +14,13 @@ function CardA() {
   // Hydrate CardA from Plan if existing
   // -----------------------------
   useEffect(() => {
+    console.log("CardA: plan changed", plan);
+    console.log("CardA: isExisting", isExisting);
     if (plan && isExisting && plan.cardA) {
       // Merge plan.cardA into current slice state
       dispatch(updateCardA({ ...cardA, ...plan.cardA }));
+    } else {
+      dispatch(resetCardA());
     }
     // We only want this to run once when plan loads
     // eslint-disable-next-line react-hooks/exhaustive-deps

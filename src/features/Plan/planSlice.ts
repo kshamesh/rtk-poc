@@ -7,6 +7,7 @@ import {
 import type { Plan } from "./Plan";
 import type { RootState } from "../../store/store";
 import { getPlan, createPlan } from "../api/planApi";
+import type { PlanMode } from "../../components/Dashboard/DashboardHeader";
 
 // plan state
 interface PlanState {
@@ -27,16 +28,18 @@ const initialState: PlanState = {
  */
 export const loadOrCreatePlan = createAsyncThunk<
   Plan,
-  string, // planId
+  { planId: string; planMode: PlanMode },
   { state: RootState }
->("plan/loadOrCreate", async (productId, { rejectWithValue }) => {
+>("plan/loadOrCreate", async ({ planId, planMode }, { rejectWithValue }) => {
   try {
     // 1. Try existing plan
-    const existing = await getPlan(productId);
-    if (existing) return existing;
+    if (planMode === "existing") {
+      const existing = await getPlan(planId);
+      if (existing) return existing;
+    }
 
     // 2. Otherwise create new
-    const created = await createPlan(productId);
+    const created = await createPlan(planId);
     return created;
   } catch (err: any) {
     return rejectWithValue(err?.message || "Failed to load/create plan");

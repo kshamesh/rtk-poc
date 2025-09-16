@@ -42,6 +42,14 @@
   background-color: #40916c;
 }
 
+.dashboard-header .button-switch {
+  background-color: #a3b18a;
+}
+
+.dashboard-header .button-switch:hover {
+  background-color: #588157;
+}
+
 /* Cards */
 .card {
   padding: 16px;

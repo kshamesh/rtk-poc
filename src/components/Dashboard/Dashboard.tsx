@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { DashboardHeader } from "./DashboardHeader";
 import { useAppDispatch } from "../../store/hooks";
 import { saveDashboard } from "../../store/saveDashboard";
@@ -8,8 +8,8 @@ import { SideDrawer } from "../SideDrawer";
 // import CardB from "../Cards/CardB";
 import CardA from "../Cards/CardA";
 import CardD from "../Cards/CardD";
-import { loadOrCreatePlan } from "../../features/Plan/planSlice";
 import { CardE } from "../Cards/CardE";
+import TravelCard from "../Cards/TravelCard";
 
 export const Dashboard: React.FC = () => {
   const handleSave = () => {
@@ -45,6 +45,9 @@ export const Dashboard: React.FC = () => {
         </div>
         <div className="card">
           <CardE />
+        </div>
+        <div className="card">
+          <TravelCard />
         </div>
       </div>
       <LiveChanges />

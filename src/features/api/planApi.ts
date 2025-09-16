@@ -19,6 +19,7 @@ export const mockPlans: Record<string, Plan> = {
       title: "Plan Card A Title",
       value: 999,
     },
+    travelCard: ["Flight", "Hotel"],
   },
   "102": {
     id: "plan-102",
@@ -31,6 +32,7 @@ export const mockPlans: Record<string, Plan> = {
       title: "Another Card A Title",
       value: 555,
     },
+    travelCard: ["Train", "Bus"],
   },
   "103": {
     id: "plan-103",
@@ -43,6 +45,7 @@ export const mockPlans: Record<string, Plan> = {
       title: "Third Card A Title",
       value: 333,
     },
+    travelCard: ["Car Rental"],
   },
   // Add more mock plans as needed
 };
@@ -55,18 +58,18 @@ export const mockPlans: Record<string, Plan> = {
  * GET plan by productId
  * - returns existing plan or null
  */
-export async function getPlan(productId?: string): Promise<Plan | null> {
+export async function getPlan(planId?: string): Promise<Plan | null> {
   await delay(500);
-  if (!productId) return null;
+  if (!planId) return null;
 
-  return mockPlans[productId] ?? null;
+  return mockPlans[planId] ?? null;
 }
 
 /**
  * CREATE a new plan
  * - new plans do NOT have cardA initially
  */
-export async function createPlan(productId: string): Promise<Plan> {
+export async function createPlan(planId: string): Promise<Plan> {
   await delay(500);
 
   const newPlan: Plan = {
@@ -74,14 +77,15 @@ export async function createPlan(productId: string): Promise<Plan> {
     name: "New Dashboard Plan",
     createdAt: new Date().toISOString(),
     createdBy: "mockUser",
-    productId,
+    productId: planId,
     isNew: true,
     cardA: {
       title: "",
       value: 0,
     },
+    travelCard: ["Yet to add"],
   };
 
-  mockPlans[productId] = newPlan;
+  // mockPlans[planId] = newPlan;
   return newPlan;
 }

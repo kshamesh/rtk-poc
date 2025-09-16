@@ -12,6 +12,7 @@ export const store = configureStore({
     cardA: cardAReducer,
     cardB: cardBReducer,
     cardC: cardCReducer,
+    travelCard: cardCReducer, // Example reuse of cardC reducer for travelCard
     [apiSlice.reducerPath]: apiSlice.reducer, // ✅ add api reducer
     userSelection: userSelectionReducer,
     sideDrawer: sideDrawerReducer,

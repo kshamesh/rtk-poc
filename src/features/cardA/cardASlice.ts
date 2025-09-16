@@ -13,8 +13,11 @@ const cardASlice = createSlice({
     updateCardA(state, action: PayloadAction<Partial<CardAState>>) {
       return { ...state, ...action.payload };
     },
+    resetCardA() {
+      return initialState;
+    },
   },
 });
 
-export const { updateCardA } = cardASlice.actions;
+export const { updateCardA, resetCardA } = cardASlice.actions;
 export default cardASlice.reducer;
