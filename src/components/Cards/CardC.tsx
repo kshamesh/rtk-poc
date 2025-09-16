@@ -27,7 +27,7 @@ function CardC() {
         ) : (
           <span>
             I acknowledge the terms and conditions given in{" "}
-            {isNew ? "🆕 New Plan" : "📂 Existing Plan"} named {plan?.name}
+            {isNew ? "🆕 New Plan" : "📂 Existing Plan"} {<b>{plan?.name}</b>}
           </span>
         )}
       </label>

@@ -27,7 +27,7 @@ const initialState: PlanState = {
  */
 export const loadOrCreatePlan = createAsyncThunk<
   Plan,
-  string, // productId
+  string, // planId
   { state: RootState }
 >("plan/loadOrCreate", async (productId, { rejectWithValue }) => {
   try {

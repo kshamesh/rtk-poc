@@ -7,7 +7,7 @@ const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 // -----------------------------
 // Mock "database"
 // -----------------------------
-const mockPlans: Record<string, Plan> = {
+export const mockPlans: Record<string, Plan> = {
   "101": {
     id: "plan-101",
     name: "Existing Dashboard Plan",

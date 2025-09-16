@@ -17,7 +17,7 @@ export const CardE: React.FC = () => {
   if (loading) {
     return (
       <div>
-        <h3>Plan</h3>
+        <h3>Current Plan</h3>
         <p>Loading...</p>
       </div>
     );
@@ -25,7 +25,7 @@ export const CardE: React.FC = () => {
 
   return (
     <div>
-      <h3>Plan</h3>
+      <h3>Current Plan</h3>
       <pre style={preStyle}>{JSON.stringify(plan, null, 2)}</pre>
     </div>
   );
