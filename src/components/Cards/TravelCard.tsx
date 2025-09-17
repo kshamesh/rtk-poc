@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 import { useAppDispatch } from "../../store/hooks";
 import { getTravelOptions } from "../../features/api/travelApi";
-import { mergeTravelCard } from "../../features/Plan/planSlice";
+import { mergeTravelCard, setMergeStatus } from "../../features/Plan/planSlice";
 import { usePlanStatus } from "../../features/Plan/usePlanStatus";
 
 const TravelCard: React.FC = () => {
@@ -13,9 +13,11 @@ const TravelCard: React.FC = () => {
   useEffect(() => {
     if (!plan?.id) return;
     const loadOptions = async () => {
+      dispatch(setMergeStatus({ card: "travel", status: "pending" }));
       const apiOptions = await getTravelOptions(plan.id);
       console.log("Fetched travel options:", apiOptions);
       dispatch(mergeTravelCard(apiOptions.map((opt) => opt.options).flat()));
+      dispatch(setMergeStatus({ card: "travel", status: "success" }));
     };
     loadOptions();
   }, [dispatch, plan?.id]);

@@ -4,7 +4,10 @@ import React, { useEffect } from "react";
 import { useAppDispatch } from "../../store/hooks";
 import { usePlanStatus } from "../../features/Plan/usePlanStatus";
 import { getDinningOptions } from "../../features/api/diningApi";
-import { mergeDinningCard } from "../../features/Plan/planSlice";
+import {
+  mergeDinningCard,
+  setMergeStatus,
+} from "../../features/Plan/planSlice";
 
 const DinningCard: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -13,9 +16,11 @@ const DinningCard: React.FC = () => {
   useEffect(() => {
     if (!plan?.id) return;
     const loadOptions = async () => {
+      dispatch(setMergeStatus({ card: "dinning", status: "pending" }));
       const apiOptions = await getDinningOptions(plan.id);
       console.log("Fetched dinning options:", apiOptions);
       dispatch(mergeDinningCard(apiOptions.map((opt) => opt.options).flat()));
+      dispatch(setMergeStatus({ card: "dinning", status: "success" }));
     };
     loadOptions();
   }, [dispatch, plan?.id]);

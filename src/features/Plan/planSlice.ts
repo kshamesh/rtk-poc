@@ -4,7 +4,7 @@ import {
   createAsyncThunk,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-import type { Plan } from "./Plan";
+import type { CardKey, Plan } from "./Plan";
 import type { RootState } from "../../store/store";
 import { getPlan, createPlan } from "../api/planApi";
 import type { PlanMode } from "../../components/Dashboard/DashboardHeader";
@@ -15,12 +15,14 @@ interface PlanState {
   plan: Plan | null;
   loading: boolean;
   error?: string | null;
+  mergeStatus: Record<string, "idle" | "pending" | "success" | "error">;
 }
 
 const initialState: PlanState = {
   plan: null,
   loading: false,
   error: null,
+  mergeStatus: {},
 };
 
 /**
@@ -73,6 +75,15 @@ const planSlice = createSlice({
         state.plan.dinningCard = Array.from(existing);
       }
     },
+    setMergeStatus(
+      state,
+      action: PayloadAction<{
+        card: CardKey;
+        status: "idle" | "pending" | "success" | "error";
+      }>
+    ) {
+      state.mergeStatus[action.payload.card] = action.payload.status;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -91,8 +102,13 @@ const planSlice = createSlice({
   },
 });
 
-export const { setPlan, clearPlan, mergeTravelCard, mergeDinningCard } =
-  planSlice.actions;
+export const {
+  setPlan,
+  clearPlan,
+  mergeTravelCard,
+  mergeDinningCard,
+  setMergeStatus,
+} = planSlice.actions;
 export default planSlice.reducer;
 
 // selectors
@@ -105,3 +121,7 @@ export const selectPlanMemoized = createSelector(
   (state: RootState) => state.plan.plan,
   (plan) => plan
 );
+
+// Selector for card merge status
+export const selectMergeStatus = (card: string) => (s: RootState) =>
+  s.plan.mergeStatus[card];

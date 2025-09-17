@@ -11,6 +11,7 @@ import CardD from "../Cards/CardD";
 import { CardE } from "../Cards/CardE";
 import TravelCard from "../Cards/TravelCard";
 import DinningCard from "../Cards/DinningCard";
+import { ExternalCard } from "./ExternalCard";
 
 export const Dashboard: React.FC = () => {
   const handleSave = () => {
@@ -54,6 +55,7 @@ export const Dashboard: React.FC = () => {
           <DinningCard />
         </div>
       </div>
+      <ExternalCard />
       <LiveChanges />
       <SideDrawer />
     </div>

@@ -12,3 +12,5 @@ export interface Plan {
   travelCard: string[]; // example of another card
   dinningCard: string[]; // example of another card
 }
+
+export type CardKey = "travel" | "dinning"; // can extend later
