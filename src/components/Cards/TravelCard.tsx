@@ -13,11 +13,11 @@ const TravelCard: React.FC = () => {
   useEffect(() => {
     if (!plan?.id) return;
     const loadOptions = async () => {
-      dispatch(setMergeStatus({ card: "travel", status: "pending" }));
+      dispatch(setMergeStatus({ card: "Travel", status: "pending" }));
       const apiOptions = await getTravelOptions(plan.id);
       console.log("Fetched travel options:", apiOptions);
       dispatch(mergeTravelCard(apiOptions.map((opt) => opt.options).flat()));
-      dispatch(setMergeStatus({ card: "travel", status: "success" }));
+      dispatch(setMergeStatus({ card: "Travel", status: "success" }));
     };
     loadOptions();
   }, [dispatch, plan?.id]);

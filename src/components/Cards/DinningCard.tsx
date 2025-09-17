@@ -16,11 +16,11 @@ const DinningCard: React.FC = () => {
   useEffect(() => {
     if (!plan?.id) return;
     const loadOptions = async () => {
-      dispatch(setMergeStatus({ card: "dinning", status: "pending" }));
+      dispatch(setMergeStatus({ card: "Dinning", status: "pending" }));
       const apiOptions = await getDinningOptions(plan.id);
       console.log("Fetched dinning options:", apiOptions);
       dispatch(mergeDinningCard(apiOptions.map((opt) => opt.options).flat()));
-      dispatch(setMergeStatus({ card: "dinning", status: "success" }));
+      dispatch(setMergeStatus({ card: "Dinning", status: "success" }));
     };
     loadOptions();
   }, [dispatch, plan?.id]);

@@ -33,9 +33,9 @@ export const Dashboard: React.FC = () => {
         }}
       >
         {/* Add more cards as needed */}
-        <div className="card">
+        {/* <div className="card">
           <CardA />
-        </div>
+        </div> */}
         {/* <div className="card">
           <CardB />
         </div> */}

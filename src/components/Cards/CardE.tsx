@@ -8,7 +8,8 @@ const preStyle: React.CSSProperties = {
   padding: "1rem",
   borderRadius: "6px",
   fontSize: "0.85rem",
-  overflowX: "auto",
+  height: "200px",
+  overflowY: "scroll",
 };
 
 export const CardE: React.FC = () => {

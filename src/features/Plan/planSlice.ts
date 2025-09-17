@@ -16,6 +16,7 @@ interface PlanState {
   loading: boolean;
   error?: string | null;
   mergeStatus: Record<string, "idle" | "pending" | "success" | "error">;
+  cardStatus: Record<string, "idle" | "pending" | "success" | "error">;
 }
 
 const initialState: PlanState = {
@@ -23,6 +24,7 @@ const initialState: PlanState = {
   loading: false,
   error: null,
   mergeStatus: {},
+  cardStatus: {},
 };
 
 /**
@@ -84,6 +86,15 @@ const planSlice = createSlice({
     ) {
       state.mergeStatus[action.payload.card] = action.payload.status;
     },
+    setCardsStatus(
+      state,
+      action: PayloadAction<{
+        card: CardKey;
+        status: "idle" | "pending" | "success" | "error";
+      }>
+    ) {
+      state.cardStatus[action.payload.card] = action.payload.status;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -108,6 +119,7 @@ export const {
   mergeTravelCard,
   mergeDinningCard,
   setMergeStatus,
+  setCardsStatus,
 } = planSlice.actions;
 export default planSlice.reducer;
 
@@ -125,3 +137,6 @@ export const selectPlanMemoized = createSelector(
 // Selector for card merge status
 export const selectMergeStatus = (card: string) => (s: RootState) =>
   s.plan.mergeStatus[card];
+
+export const selectCardStatus = (card: string) => (s: RootState) =>
+  s.plan.cardStatus[card];
