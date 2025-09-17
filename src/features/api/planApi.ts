@@ -20,6 +20,7 @@ export const mockPlans: Record<string, Plan> = {
       value: 999,
     },
     travelCard: ["Flight", "Hotel"],
+    dinningCard: ["Japanese", "Mexican"],
   },
   "102": {
     id: "plan-102",
@@ -33,6 +34,7 @@ export const mockPlans: Record<string, Plan> = {
       value: 555,
     },
     travelCard: ["Train", "Bus"],
+    dinningCard: ["North Indian"],
   },
   "103": {
     id: "plan-103",
@@ -46,6 +48,7 @@ export const mockPlans: Record<string, Plan> = {
       value: 333,
     },
     travelCard: ["Car Rental"],
+    dinningCard: ["Chinese", "Italian"],
   },
   // Add more mock plans as needed
 };
@@ -59,7 +62,7 @@ export const mockPlans: Record<string, Plan> = {
  * - returns existing plan or null
  */
 export async function getPlan(planId?: string): Promise<Plan | null> {
-  await delay(500);
+  await delay(300);
   if (!planId) return null;
 
   return mockPlans[planId] ?? null;

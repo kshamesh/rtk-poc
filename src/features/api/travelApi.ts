@@ -8,7 +8,7 @@ interface TravelOption {
 export async function getTravelOptions(
   planId: string | undefined
 ): Promise<TravelOption[]> {
-  await delay(800); // fake network delay
+  await delay(300); // fake network delay
   return [
     { planId: "plan-101", options: ["Electric Car", "Hybrid Car"] },
     { planId: "plan-102", options: ["Bicycle", "Metro"] },

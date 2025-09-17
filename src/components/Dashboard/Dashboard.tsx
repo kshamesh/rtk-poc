@@ -10,6 +10,7 @@ import CardA from "../Cards/CardA";
 import CardD from "../Cards/CardD";
 import { CardE } from "../Cards/CardE";
 import TravelCard from "../Cards/TravelCard";
+import DinningCard from "../Cards/DinningCard";
 
 export const Dashboard: React.FC = () => {
   const handleSave = () => {
@@ -48,6 +49,9 @@ export const Dashboard: React.FC = () => {
         </div>
         <div className="card">
           <TravelCard />
+        </div>
+        <div className="card">
+          <DinningCard />
         </div>
       </div>
       <LiveChanges />
