@@ -8,6 +8,7 @@ import type { Plan } from "./Plan";
 import type { RootState } from "../../store/store";
 import { getPlan, createPlan } from "../api/planApi";
 import type { PlanMode } from "../../components/Dashboard/DashboardHeader";
+import { createSelector } from "@reduxjs/toolkit";
 
 // plan state
 interface PlanState {
@@ -90,3 +91,9 @@ export default planSlice.reducer;
 export const selectPlan = (s: RootState) => s.plan.plan;
 export const selectPlanLoading = (s: RootState) => s.plan.loading;
 export const selectPlanError = (s: RootState) => s.plan.error;
+
+// Memoized selector using createSelector
+export const selectPlanMemoized = createSelector(
+  (state: RootState) => state.plan.plan,
+  (plan) => plan
+);

@@ -1,6 +1,17 @@
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
-export async function getTravelOptions(): Promise<string[]> {
+interface TravelOption {
+  planId: string;
+  options: string[];
+}
+
+export async function getTravelOptions(
+  planId: string | undefined
+): Promise<TravelOption[]> {
   await delay(800); // fake network delay
-  return ["Electric Car", "Hybrid Car"];
+  return [
+    { planId: "plan-101", options: ["Electric Car", "Hybrid Car"] },
+    { planId: "plan-102", options: ["Bicycle", "Metro"] },
+    { planId: "plan-103", options: ["Cruise", "Ferry", "Subway"] },
+  ].filter((option) => option.planId === planId);
 }

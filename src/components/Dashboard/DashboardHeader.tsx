@@ -46,11 +46,6 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onSave }) => {
     }
   };
 
-  useEffect(() => {
-    const planId = "102"; // 🚩 This is the last created plan
-    dispatch(loadOrCreatePlan({ planId, planMode }));
-  }, [dispatch]);
-
   return (
     <div className="dashboard-header">
       <h1>Dashboard</h1>
