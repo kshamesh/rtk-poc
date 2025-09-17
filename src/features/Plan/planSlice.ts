@@ -58,6 +58,13 @@ const planSlice = createSlice({
       state.plan = null;
       state.error = null;
     },
+    mergeTravelCard(state, action: PayloadAction<string[]>) {
+      if (state.plan) {
+        const existing = new Set(state.plan.travelCard ?? []);
+        action.payload.forEach((opt) => existing.add(opt));
+        state.plan.travelCard = Array.from(existing);
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -76,7 +83,7 @@ const planSlice = createSlice({
   },
 });
 
-export const { setPlan, clearPlan } = planSlice.actions;
+export const { setPlan, clearPlan, mergeTravelCard } = planSlice.actions;
 export default planSlice.reducer;
 
 // selectors
