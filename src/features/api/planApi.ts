@@ -87,6 +87,7 @@ export async function createPlan(planId: string): Promise<Plan> {
       value: 0,
     },
     travelCard: ["Yet to add"],
+    dinningCard: ["Yet to add"],
   };
 
   // mockPlans[planId] = newPlan;
